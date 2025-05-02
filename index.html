@@ -135,7 +135,7 @@
 <body>
   <!-- Dark Mode Toggle -->
   <div class="toggle-container">
-    <span class="toggle-label" id="mode-label">Dark Mode</span>
+    <span class="toggle-label" id="mode-label">Dark</span>
     <label class="toggle-switch">
       <input type="checkbox" id="toggle">
       <span class="toggle-slider"></span>
@@ -159,7 +159,7 @@
     if (localStorage.getItem('theme') === 'dark') {
       body.classList.add('dark');
       toggle.checked = true;
-      modeLabel.textContent = 'Light Mode'; // Update label to 'Light Mode'
+      modeLabel.textContent = 'Light Mode'; // Update label to 'Light'
     }
 
     toggle.addEventListener('change', () => {
@@ -169,9 +169,9 @@
 
       // Change label text based on theme
       if (theme === 'dark') {
-        modeLabel.textContent = 'Light Mode';
+        modeLabel.textContent = 'Light';
       } else {
-        modeLabel.textContent = 'Dark Mode';
+        modeLabel.textContent = 'Dark';
       }
     });
   </script>

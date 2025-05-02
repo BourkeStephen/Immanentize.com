@@ -58,16 +58,18 @@
       font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
-      max-width: 600px;
+      max-width: 100%;
       margin: 5rem auto;
       line-height: 1.6;
       transition: background-color 0.3s ease, color 0.3s ease;
+      box-sizing: border-box;
     }
 
     h1 {
       font-size: 1.5rem;
       font-weight: 600;
       margin-bottom: 2rem;
+      word-wrap: break-word;
     }
 
     p {
@@ -78,6 +80,23 @@
     a {
       color: var(--link-color);
       text-decoration: underline;
+    }
+
+    /* Operators Section Styles */
+    .operators {
+      margin-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .operators h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .operators a {
+      font-size: 1rem;
+      color: var(--text-color);
     }
 
     /* Toggle Switch Styles */
@@ -122,7 +141,6 @@
       transition: transform 0.3s ease;
     }
 
-    /* When the dark mode is active */
     body.dark .toggle-switch {
       background-color: #333;
     }
@@ -133,20 +151,17 @@
   </style>
 </head>
 <body>
-  <!-- Dark Mode Toggle -->
-  <div class="toggle-container">
-    <span class="toggle-label" id="mode-label">Dark</span>
-    <label class="toggle-switch">
-      <input type="checkbox" id="toggle">
-      <span class="toggle-slider"></span>
-    </label>
-  </div>
-
   <h1>Immanentize</h1>
   <p>Exited founder-level consulting for determined companies.</p>
   <p>Strategy. Growth. Exit.</p>
   <p><a href="mailto:hello@immanentize.com">hello@immanentize.com</a></p>
   <p><a href="https://www.linkedin.com/in/bourkestephen/" target="_blank">linkedin.com/in/bourkestephen</a></p>
+
+  <!-- Operators Section -->
+  <div class="operators">
+    <h2>Operators</h2>
+    <p><a href="https://www.linkedin.com/in/luiscamaraking/" target="_blank">Luis Camara King</a></p>
+  </div>
 
   <p style="font-size: 0.9rem; color: #666; margin-top: 3rem;">&copy; 2025 Immanentize Ltd</p>
 

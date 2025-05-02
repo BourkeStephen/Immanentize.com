@@ -80,31 +80,67 @@
       text-decoration: underline;
     }
 
-    #toggle {
+    /* Toggle Switch Styles */
+    .toggle-container {
       position: absolute;
       top: 1rem;
       right: 1rem;
-      background: none;
-      border: 1px solid var(--text-color);
-      border-radius: 0;
-      padding: 0.4rem 0.6rem;
-      cursor: pointer;
-      color: var(--text-color);
-      font-size: 0.75rem;
-      font-family: inherit;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
     }
 
-    #toggle:hover {
-      background-color: var(--text-color);
-      color: var(--bg-color);
+    .toggle-label {
+      font-size: 0.9rem;
+      color: var(--text-color);
+      margin-right: 8px;
+    }
+
+    .toggle-switch {
+      width: 40px;
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 50px;
+      position: relative;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    /* When the dark mode is active */
+    body.dark .toggle-switch {
+      background-color: #333;
+    }
+
+    body.dark .toggle-slider {
+      transform: translateX(20px);
     }
   </style>
 </head>
 <body>
-  <button id="toggle">Dark</button>
+  <!-- Dark Mode Toggle -->
+  <div class="toggle-container">
+    <span class="toggle-label" id="mode-label">Dark Mode</span>
+    <label class="toggle-switch">
+      <input type="checkbox" id="toggle">
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
 
   <h1>Immanentize</h1>
   <p>Exited founder-level consulting for determined companies.</p>
@@ -117,16 +153,26 @@
   <script>
     const body = document.body;
     const toggle = document.getElementById('toggle');
+    const modeLabel = document.getElementById('mode-label');
 
     // Apply saved theme on load
     if (localStorage.getItem('theme') === 'dark') {
       body.classList.add('dark');
+      toggle.checked = true;
+      modeLabel.textContent = 'Light Mode'; // Update label to 'Light Mode'
     }
 
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('change', () => {
       body.classList.toggle('dark');
       const theme = body.classList.contains('dark') ? 'dark' : 'light';
       localStorage.setItem('theme', theme);
+
+      // Change label text based on theme
+      if (theme === 'dark') {
+        modeLabel.textContent = 'Light Mode';
+      } else {
+        modeLabel.textContent = 'Dark Mode';
+      }
     });
   </script>
 </body>

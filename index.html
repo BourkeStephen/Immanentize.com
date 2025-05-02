@@ -40,32 +40,72 @@
   </script>
 
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --link-color: #000000;
+    }
+
+    body.dark {
+      --bg-color: #111111;
+      --text-color: #f3f3f3;
+      --link-color: #f3f3f3;
+    }
+
     body {
       margin: 0;
       padding: 2rem;
       font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: #fff;
-      color: #000;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       max-width: 600px;
       margin: 5rem auto;
       line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
+
     h1 {
       font-size: 1.5rem;
       font-weight: 600;
       margin-bottom: 2rem;
     }
+
     p {
       margin: 1.2rem 0;
       font-size: 1rem;
     }
+
     a {
-      color: inherit;
+      color: var(--link-color);
       text-decoration: underline;
+    }
+
+    #toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: 1px solid var(--text-color);
+      border-radius: 0;
+      padding: 0.4rem 0.6rem;
+      cursor: pointer;
+      color: var(--text-color);
+      font-size: 0.75rem;
+      font-family: inherit;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.2s ease;
+    }
+
+    #toggle:hover {
+      background-color: var(--text-color);
+      color: var(--bg-color);
     }
   </style>
 </head>
 <body>
+  <button id="toggle">Toggle Mode</button>
+
   <h1>Immanentize</h1>
   <p>Exited founder-level consulting for determined companies.</p>
   <p>Strategy. Growth. Exit.</p>
@@ -73,5 +113,21 @@
   <p><a href="https://www.linkedin.com/in/bourkestephen/" target="_blank">linkedin.com/in/bourkestephen</a></p>
 
   <p style="font-size: 0.9rem; color: #666; margin-top: 3rem;">&copy; 2025 Immanentize Ltd</p>
+
+  <script>
+    const body = document.body;
+    const toggle = document.getElementById('toggle');
+
+    // Apply saved theme on load
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark');
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const theme = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+    });
+  </script>
 </body>
 </html>

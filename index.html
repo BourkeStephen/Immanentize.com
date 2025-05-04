@@ -72,10 +72,6 @@
       margin: 0 0 2rem 0;
     }
 
-    .bold {
-      font-weight: 700;
-    }
-
     .icon-heading {
       display: inline-block;
       margin-right: 0.5rem;
@@ -186,7 +182,7 @@
 
   <h1>Immanentize</h1>
   <p>Exited founder and operator level support for serious European start-ups and scale-ups.</p>
-  <p class="bold">Strategy. Growth. Exit.</p>
+  <p style="font-size: 1.05rem; font-weight: 700; letter-spacing: 0.3px; margin-top: 0.6rem;">Strategy. Growth. Exit.</p>
 
   <!-- What We Do / Don't Do Section -->
   <div class="section">
@@ -244,7 +240,6 @@
       modeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
     });
 
-    // Tooltip toggle for mobile
     const tooltipIcon = document.getElementById('tooltipIcon');
     document.addEventListener('click', (e) => {
       const isTooltip = tooltipIcon.contains(e.target);

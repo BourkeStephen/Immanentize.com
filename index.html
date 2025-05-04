@@ -87,11 +87,36 @@
 
     .info-tooltip {
       display: inline-block;
+      position: relative;
       margin-left: 0.4rem;
       font-size: 0.95rem;
       color: #aaa;
-      cursor: help;
+      cursor: pointer;
       vertical-align: middle;
+    }
+
+    .tooltip-text {
+      visibility: hidden;
+      opacity: 0;
+      background-color: #eee;
+      color: #000;
+      text-align: left;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 240px;
+      font-size: 0.85rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: opacity 0.2s ease;
+    }
+
+    .info-tooltip:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
     }
 
     /* Toggle Switch Styles */
@@ -179,8 +204,11 @@
     <h2>Operators</h2>
     <p><a href="https://www.linkedin.com/in/bourkestephen/" target="_blank">Stephen Bourke</a> (Healthtech, Strategy)</p>
     <p><a href="https://www.linkedin.com/in/luiscamaraking/" target="_blank">Luis de la Cámara</a> (Gaming, Marketing)</p>
-    <p><a href="https://www.linkedin.com/in/dominic-matthew-williams/" target="_blank">Dominic Williams</a> (Logistics, Team Leadership)
-      <span class="info-tooltip" title="These are trusted operators with proven judgment. Each has proven their ability to scale.">ℹ︎</span>
+    <p>
+      <a href="https://www.linkedin.com/in/dominic-matthew-williams/" target="_blank">Dominic Williams</a> (Logistics, Team Leadership)
+      <span class="info-tooltip">ℹ︎
+        <span class="tooltip-text">These are trusted operators with proven judgment. Each has proven their ability to scale.</span>
+      </span>
     </p>
   </div>
 

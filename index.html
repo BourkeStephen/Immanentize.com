@@ -38,17 +38,17 @@
     }
 
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       font-weight: 600;
       margin-bottom: 2rem;
     }
 
     h2 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
-      margin-top: 2.5rem;
+      margin-top: 2.2rem;
       margin-bottom: 0.8rem;
-      text-transform: none;
+      text-transform: lowercase;
     }
 
     p {
@@ -62,7 +62,7 @@
     }
 
     .section {
-      margin-top: 3rem;
+      margin-top: 2.5rem;
     }
 
     .logo {
@@ -98,8 +98,8 @@
     .tooltip-text {
       visibility: hidden;
       opacity: 0;
-      background-color: #eee;
-      color: #000;
+      background-color: #f6f6f6;
+      color: #333;
       text-align: left;
       padding: 0.4rem 0.6rem;
       border-radius: 4px;
@@ -108,9 +108,10 @@
       bottom: 125%;
       left: 50%;
       transform: translateX(-50%);
-      width: 240px;
-      font-size: 0.85rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 220px;
+      font-size: 0.8rem;
+      font-weight: 400;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
       transition: opacity 0.2s ease;
     }
 
@@ -120,7 +121,6 @@
       opacity: 1;
     }
 
-    /* Toggle Switch Styles */
     .toggle-container {
       position: absolute;
       top: 1rem;
@@ -191,11 +191,11 @@
 
   <!-- What We Do / Don't Do Section -->
   <div class="section">
-    <h2><span class="icon-heading">✓</span>What we do</h2>
+    <h2><span class="icon-heading">✓</span>what we do</h2>
     <p><strong>Clarity. Outcomes.</strong><br>
     We help teams cut through the noise, move fast, and make it count.</p>
 
-    <h2><span class="icon-heading">✕</span>What we don’t do</h2>
+    <h2><span class="icon-heading">✕</span>what we don’t do</h2>
     <p><strong>No busywork.</strong><br>
     We work on what matters.</p>
   </div>
@@ -203,7 +203,7 @@
   <!-- Operators Section -->
   <div class="section">
     <h2>
-      Operators
+      operators
       <span class="info-tooltip" id="tooltipIcon">ℹ︎
         <span class="tooltip-text">These are trusted operators with proven judgment. Each has proven their ability to scale.</span>
       </span>
@@ -215,7 +215,7 @@
 
   <!-- Investors Section -->
   <div class="section">
-    <h2>Investors</h2>
+    <h2>investors</h2>
     <p><strong>We support diligence through to Series B.</strong><br>
     Operator-led. Detail-driven. Focused on how companies really work.</p>
   </div>
@@ -245,7 +245,7 @@
       modeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
     });
 
-    // Mobile-friendly tooltip toggle
+    // Tooltip toggle for mobile
     const tooltipIcon = document.getElementById('tooltipIcon');
     document.addEventListener('click', (e) => {
       const isTooltip = tooltipIcon.contains(e.target);

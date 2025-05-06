@@ -92,21 +92,19 @@
     .tooltip-text {
       visibility: hidden;
       opacity: 0;
-      width: 220px;
       background-color: #f6f6f6;
       color: #333;
-      text-align: left;
+      text-align: center;
       padding: 0.4rem 0.6rem;
       border-radius: 4px;
       position: absolute;
-      bottom: 125%;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 1.5em;
+      left: 0;
       font-size: 0.8rem;
       font-weight: 400;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
       transition: opacity 0.2s ease;
-      white-space: normal;
+      white-space: nowrap;
       z-index: 10;
     }
 
@@ -118,18 +116,6 @@
 
     .tooltip-name {
       position: relative;
-    }
-
-    .tooltip-name .tooltip-text {
-      left: 0;
-      transform: none;
-      top: 1.5em;
-    }
-
-    @media (max-width: 600px) {
-      .tooltip-name .tooltip-text {
-        width: calc(100vw - 2rem);
-      }
     }
 
     .toggle-container {
@@ -296,15 +282,6 @@
       const theme = body.classList.contains('dark') ? 'dark' : 'light';
       localStorage.setItem('theme', theme);
       modeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
-    });
-
-    const tooltipIcon = document.getElementById('tooltipIcon');
-    document.addEventListener('click', (e) => {
-      const isTooltip = tooltipIcon && tooltipIcon.contains(e.target);
-      if (tooltipIcon) {
-        tooltipIcon.classList.toggle('active', isTooltip);
-        if (!isTooltip) tooltipIcon.classList.remove('active');
-      }
     });
   </script>
 </body>

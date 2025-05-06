@@ -25,13 +25,12 @@
     }
 
     body {
-      margin: 0;
+      margin: 5rem auto 0 auto;
       padding: 2rem;
       font-family: 'IBM Plex Sans', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       max-width: 100%;
-      margin: 5rem auto;
       line-height: 1.6;
       transition: background-color 0.3s ease, color 0.3s ease;
       box-sizing: border-box;
@@ -183,9 +182,25 @@
       color: #666;
       margin-top: 3rem;
     }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .no-js .fade-in {
+      opacity: 1 !important;
+      transform: none !important;
+    }
   </style>
 </head>
-<body>
+<body class="no-js">
 
   <div class="toggle-container">
     <span class="toggle-label" id="mode-label">Dark</span>
@@ -226,9 +241,9 @@
     <p><a href="https://www.linkedin.com/in/dominic-matthew-williams/" target="_blank">Dominic Williams</a> (Logistics, Team Leadership)</p>
   </div>
 
-  <div class="section investors-section">
+  <div class="section investors-section fade-in">
     <h2>Investors</h2>
-    <p>Due diligence to Series B. Focused on how companies really work.</p>
+    <p><strong>From diligence to Series B—focused on how companies really work.</strong></p>
   </div>
 
   <p class="email">
@@ -238,6 +253,8 @@
   <p class="footer">&copy; 2025 Immanentize Ltd</p>
 
   <script>
+    document.body.classList.remove('no-js');
+
     const body = document.body;
     const toggle = document.getElementById('toggle');
     const modeLabel = document.getElementById('mode-label');
@@ -261,6 +278,20 @@
       tooltipIcon.classList.toggle('active', isTooltip);
       if (!isTooltip) tooltipIcon.classList.remove('active');
     });
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    fadeElements.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

@@ -6,10 +6,10 @@
   <title>Immanentize</title>
 
   <meta name="description" content="Stephen Bourke and trusted partners provide exited founder and operator level consulting for European startups and ambitious companies. Strategy, compliance, growth, and exit planning from proven operators.">
-  <meta name="keywords" content="Stephen Bourke, Immanentize, exited founder, strategy consultant, startup advisor, growth, healthtech, gaming, seed, series a, series b, logistics, 3PL, exit strategy, due diligence, D2C marketing, business development, C-level consulting">
+  <meta name="keywords" content="Stephen Bourke, Immanentize, exited founder, strategy consultant, startup advisor, growth, healthtech, gaming, logistics, 3PL, exit strategy, due diligence, D2C marketing, business development, C-level consulting">
   <meta name="author" content="Stephen Bourke">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -37,10 +37,9 @@
     }
 
     h1 {
-      font-size: 1.35rem;
+      font-size: 1.5rem;
       font-weight: 600;
       margin-bottom: 2rem;
-      text-decoration: underline;
     }
 
     h2 {
@@ -183,17 +182,36 @@
       margin-top: 3rem;
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.6s ease-out forwards;
+    .name-tooltip {
+      position: relative;
+      cursor: pointer;
+      text-decoration: underline dotted;
+      display: inline-block;
     }
 
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .name-tooltip-text {
+      visibility: hidden;
+      opacity: 0;
+      background-color: #f6f6f6;
+      color: #333;
+      text-align: left;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-size: 0.75rem;
+      font-weight: 400;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      z-index: 10;
+      transition: opacity 0.2s ease;
+    }
+
+    .name-tooltip.active .name-tooltip-text {
+      visibility: visible;
+      opacity: 1;
     }
   </style>
 </head>
@@ -218,7 +236,7 @@
     Strategy. Growth. Exit.
   </p>
 
-  <div class="section fade-in" style="animation-delay: 0.2s;">
+  <div class="section">
     <h2><span class="icon-heading">✓</span>What we do</h2>
     <p>Clarity, outcomes — we cut through noise and make changes where they count.</p>
 
@@ -226,19 +244,40 @@
     <p>Pointless slides, meetings — we focus on what matters.</p>
   </div>
 
-  <div class="section fade-in" style="animation-delay: 0.4s;">
+  <div class="section">
     <h2>
       Operators
       <span class="info-tooltip" id="tooltipIcon">ℹ︎
         <span class="tooltip-text">No random list. High trust. We like working together.</span>
       </span>
     </h2>
-    <p><a href="https://www.linkedin.com/in/bourkestephen/" target="_blank">Stephen Bourke</a> (Health, Strategy)</p>
-    <p><a href="https://www.linkedin.com/in/luiscamaraking/" target="_blank">Luis de la Cámara</a> (Gaming, Marketing)</p>
-    <p><a href="https://www.linkedin.com/in/dominic-matthew-williams/" target="_blank">Dominic Williams</a> (Logistics, Team Leadership)</p>
+    <p>
+      <a href="https://www.linkedin.com/in/bourkestephen/" target="_blank">
+        <span class="name-tooltip" onclick="toggleNameTooltip(this)">
+          Stephen Bourke
+          <span class="name-tooltip-text">Founded Echo, scaled to 500k+ users, exited to McKesson.</span>
+        </span>
+      </a> (Health, Strategy)
+    </p>
+    <p>
+      <a href="https://www.linkedin.com/in/luiscamaraking/" target="_blank">
+        <span class="name-tooltip" onclick="toggleNameTooltip(this)">
+          Luis de la Cámara
+          <span class="name-tooltip-text">Led growth at King, Rovio and Riot. Brand meets performance.</span>
+        </span>
+      </a> (Gaming, Marketing)
+    </p>
+    <p>
+      <a href="https://www.linkedin.com/in/dominic-matthew-williams/" target="_blank">
+        <span class="name-tooltip" onclick="toggleNameTooltip(this)">
+          Dominic Williams
+          <span class="name-tooltip-text">Led ops at Echo, HelloFresh and Modern Milkman. Scales teams and systems.</span>
+        </span>
+      </a> (Logistics, Team Leadership)
+    </p>
   </div>
 
-  <div class="section investors-section fade-in" style="animation-delay: 0.6s;">
+  <div class="section investors-section">
     <h2>Investors</h2>
     <p>From diligence to Series B—focused on how companies really work.</p>
   </div>
@@ -247,7 +286,7 @@
     <a href="mailto:hello@immanentize.com" style="color: inherit;">hello@immanentize.com</a>
   </p>
 
-  <p class="footer">&copy; 2025 Immanentize Ltd. Vibecoded with ChatGPT, Git & Runway. </p>
+  <p class="footer">&copy; 2025 Immanentize Ltd. Vibecoded with ChatGPT, Git & Runway.</p>
 
   <script>
     const body = document.body;
@@ -272,6 +311,19 @@
       const isTooltip = tooltipIcon.contains(e.target);
       tooltipIcon.classList.toggle('active', isTooltip);
       if (!isTooltip) tooltipIcon.classList.remove('active');
+    });
+
+    function toggleNameTooltip(el) {
+      document.querySelectorAll('.name-tooltip').forEach(tip => {
+        if (tip !== el) tip.classList.remove('active');
+      });
+      el.classList.toggle('active');
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.name-tooltip')) {
+        document.querySelectorAll('.name-tooltip').forEach(tip => tip.classList.remove('active'));
+      }
     });
   </script>
 </body>

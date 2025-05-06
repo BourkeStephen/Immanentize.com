@@ -9,7 +9,7 @@
   <meta name="keywords" content="Stephen Bourke, Immanentize, exited founder, strategy consultant, startup advisor, growth, healthtech, gaming, seed, series a, series b, logistics, 3PL, exit strategy, due diligence, D2C marketing, business development, C-level consulting">
   <meta name="author" content="Stephen Bourke">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">  
 
   <style>
     :root {
@@ -92,22 +92,22 @@
     .tooltip-text {
       visibility: hidden;
       opacity: 0;
+      width: 220px;
       background-color: #f6f6f6;
       color: #333;
-      text-align: center;
+      text-align: left;
       padding: 0.4rem 0.6rem;
       border-radius: 4px;
       position: absolute;
-      bottom: 120%;
+      bottom: 125%;
       left: 50%;
       transform: translateX(-50%);
       font-size: 0.8rem;
       font-weight: 400;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
       transition: opacity 0.2s ease;
-      white-space: nowrap;
-      z-index: 9999;
-      max-width: 90vw;
+      white-space: normal;
+      z-index: 10;
     }
 
     .info-tooltip:hover .tooltip-text,
@@ -121,9 +121,15 @@
     }
 
     .tooltip-name .tooltip-text {
-      bottom: 120%;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
+      transform: none;
+      top: 1.5em;
+    }
+
+    @media (max-width: 600px) {
+      .tooltip-name .tooltip-text {
+        width: calc(100vw - 2rem);
+      }
     }
 
     .toggle-container {
@@ -290,6 +296,15 @@
       const theme = body.classList.contains('dark') ? 'dark' : 'light';
       localStorage.setItem('theme', theme);
       modeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
+    });
+
+    const tooltipIcon = document.getElementById('tooltipIcon');
+    document.addEventListener('click', (e) => {
+      const isTooltip = tooltipIcon && tooltipIcon.contains(e.target);
+      if (tooltipIcon) {
+        tooltipIcon.classList.toggle('active', isTooltip);
+        if (!isTooltip) tooltipIcon.classList.remove('active');
+      }
     });
   </script>
 </body>

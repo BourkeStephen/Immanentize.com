@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Immanentize</title>
-  <meta name="description" content="Stephen Bourke and trusted partners provide exited founder and operator level consulting for European startups and ambitious companies.">
+
+  <meta name="description" content="Stephen Bourke and trusted partners provide exited founder and operator level consulting for European startups and ambitious companies. Strategy, compliance, growth, and exit planning from proven operators.">
+  <meta name="keywords" content="Stephen Bourke, Immanentize, exited founder, strategy consultant, startup advisor, growth, healthtech, gaming, seed, series a, series b, logistics, 3PL, exit strategy, due diligence, D2C marketing, business development, C-level consulting">
   <meta name="author" content="Stephen Bourke">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">  
 
   <style>
     :root {
@@ -82,63 +84,56 @@
     .info-tooltip {
       display: inline-block;
       position: relative;
+      margin-left: 0.4rem;
       font-size: 0.95rem;
       color: #aaa;
       cursor: pointer;
-      margin-left: 0.5rem;
     }
 
-    .info-tooltip .tooltip-text {
+    .tooltip-text {
       visibility: hidden;
       opacity: 0;
-      position: absolute;
-      top: -2.2rem;
-      left: 50%;
-      transform: translateX(-50%);
       background-color: #f6f6f6;
       color: #333;
+      text-align: center;
       padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      position: absolute;
+      top: 1.5em;
+      left: 50%;
+      transform: translateX(-50%);
       font-size: 0.8rem;
       font-weight: 400;
-      border-radius: 4px;
-      white-space: nowrap;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-      z-index: 10;
       transition: opacity 0.2s ease;
-    }
-
-    .info-tooltip:hover .tooltip-text {
-      visibility: visible;
-      opacity: 1;
+      white-space: nowrap;
+      z-index: 10;
     }
 
     .tooltip-name {
       position: relative;
-      text-decoration: none;
+      display: inline-block;
     }
 
     .tooltip-name .tooltip-text {
-      visibility: hidden;
-      opacity: 0;
-      position: absolute;
-      top: -1.8rem;
+      top: 1.5em;
       left: 50%;
       transform: translateX(-50%);
-      background-color: #f6f6f6;
-      color: #333;
-      padding: 0.4rem 0.6rem;
-      font-size: 0.8rem;
-      font-weight: 400;
-      border-radius: 4px;
       white-space: nowrap;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-      z-index: 10;
-      transition: opacity 0.2s ease;
     }
 
+    .info-tooltip:hover .tooltip-text,
     .tooltip-name:hover .tooltip-text {
       visibility: visible;
       opacity: 1;
+    }
+
+    @media (max-width: 600px) {
+      .tooltip-text {
+        white-space: normal;
+        width: calc(100vw - 4rem);
+        max-width: 320px;
+      }
     }
 
     .toggle-container {
@@ -190,6 +185,11 @@
       transform: translateX(20px);
     }
 
+    .investors-section {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+
     .email {
       font-size: 1.1rem;
       font-weight: 600;
@@ -202,9 +202,23 @@
       color: #666;
       margin-top: 3rem;
     }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body>
+
   <div class="toggle-container">
     <span class="toggle-label" id="mode-label">Dark</span>
     <label class="toggle-switch">
@@ -224,7 +238,7 @@
     Strategy. Growth. Exit.
   </p>
 
-  <div class="section">
+  <div class="section fade-in" style="animation-delay: 0.2s;">
     <h2><span class="icon-heading">✓</span>What we do</h2>
     <p>Clarity, outcomes — we cut through noise and make changes where they count.</p>
 
@@ -232,7 +246,7 @@
     <p>Pointless slides, meetings — we focus on what matters.</p>
   </div>
 
-  <div class="section">
+  <div class="section fade-in" style="animation-delay: 0.4s;">
     <h2>
       Operators
       <span class="info-tooltip">ℹ︎
@@ -259,7 +273,7 @@
     </p>
   </div>
 
-  <div class="section">
+  <div class="section investors-section fade-in" style="animation-delay: 0.6s;">
     <h2>Investors</h2>
     <p>From diligence to Series B—focused on how companies really work.</p>
   </div>

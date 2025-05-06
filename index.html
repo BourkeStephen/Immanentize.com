@@ -9,7 +9,7 @@
   <meta name="keywords" content="Stephen Bourke, Immanentize, exited founder, strategy consultant, startup advisor, growth, healthtech, gaming, seed, series a, series b, logistics, 3PL, exit strategy, due diligence, D2C marketing, business development, C-level consulting">
   <meta name="author" content="Stephen Bourke">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -95,19 +95,24 @@
       opacity: 0;
       background-color: #f6f6f6;
       color: #333;
-      text-align: center;
       padding: 0.4rem 0.6rem;
       border-radius: 4px;
       position: absolute;
-      top: 1.5em;
-      left: 50%;
-      transform: translateX(-50%);
+      top: -0.2rem;
+      left: 100%;
+      margin-left: 0.5rem;
       font-size: 0.8rem;
       font-weight: 400;
+      white-space: nowrap;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
       transition: opacity 0.2s ease;
-      white-space: nowrap;
       z-index: 10;
+    }
+
+    .info-tooltip:hover .tooltip-text,
+    .tooltip-name:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
     }
 
     .tooltip-name {
@@ -116,16 +121,9 @@
     }
 
     .tooltip-name .tooltip-text {
-      top: 1.5em;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-    }
-
-    .info-tooltip:hover .tooltip-text,
-    .tooltip-name:hover .tooltip-text {
-      visibility: visible;
-      opacity: 1;
+      top: -0.2rem;
+      left: 100%;
+      margin-left: 0.5rem;
     }
 
     @media (max-width: 600px) {

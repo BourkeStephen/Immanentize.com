@@ -186,21 +186,18 @@
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      animation: fadeInUp 0.6s ease-out forwards;
     }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .no-js .fade-in {
-      opacity: 1 !important;
-      transform: none !important;
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
-<body class="no-js">
+<body>
 
   <div class="toggle-container">
     <span class="toggle-label" id="mode-label">Dark</span>
@@ -221,7 +218,7 @@
     Strategy. Growth. Exit.
   </p>
 
-  <div class="section">
+  <div class="section fade-in" style="animation-delay: 0.2s;">
     <h2><span class="icon-heading">✓</span>What we do</h2>
     <p>Clarity, outcomes — we cut through noise and make changes where they count.</p>
 
@@ -229,7 +226,7 @@
     <p>Pointless slides, meetings — we focus on what matters.</p>
   </div>
 
-  <div class="section">
+  <div class="section fade-in" style="animation-delay: 0.4s;">
     <h2>
       Operators
       <span class="info-tooltip" id="tooltipIcon">ℹ︎
@@ -241,7 +238,7 @@
     <p><a href="https://www.linkedin.com/in/dominic-matthew-williams/" target="_blank">Dominic Williams</a> (Logistics, Team Leadership)</p>
   </div>
 
-  <div class="section investors-section fade-in">
+  <div class="section investors-section fade-in" style="animation-delay: 0.6s;">
     <h2>Investors</h2>
     <p><strong>From diligence to Series B—focused on how companies really work.</strong></p>
   </div>
@@ -253,8 +250,6 @@
   <p class="footer">&copy; 2025 Immanentize Ltd</p>
 
   <script>
-    document.body.classList.remove('no-js');
-
     const body = document.body;
     const toggle = document.getElementById('toggle');
     const modeLabel = document.getElementById('mode-label');
@@ -278,20 +273,6 @@
       tooltipIcon.classList.toggle('active', isTooltip);
       if (!isTooltip) tooltipIcon.classList.remove('active');
     });
-
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.15
-    });
-
-    fadeElements.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Immanentize</title>
 
-  <meta name="description" content="Stephen Bourke and trusted partners provide exited founder and operator level consulting for European startups and ambitious companies. Strategy, compliance, growth, and exit planning from proven operators.">
-  <meta name="keywords" content="Stephen Bourke, Immanentize, exited founder, strategy consultant, startup advisor, growth, healthtech, gaming, logistics, 3PL, exit strategy, due diligence, D2C marketing, business development, C-level consulting">
+  <meta name="description" content="Stephen Bourke and trusted partners provide exited founder and operator level consulting for European startups and ambitious companies.">
+  <meta name="keywords" content="Stephen Bourke, Immanentize, exited founder, strategy consultant, startup advisor, growth, healthtech, gaming, logistics, 3PL, exit strategy, due diligence, D2C marketing">
   <meta name="author" content="Stephen Bourke">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">  
 
   <style>
     :root {
@@ -68,7 +68,7 @@
       max-width: 112px;
       height: auto;
       display: block;
-      margin: 0 0 2rem 0;
+      margin-bottom: 2rem;
     }
 
     .icon-heading {
@@ -79,19 +79,17 @@
       line-height: 1;
     }
 
-    .info-tooltip {
-      display: inline-block;
+    .tooltip-name {
       position: relative;
-      margin-left: 0.4rem;
-      font-size: 0.95rem;
-      color: #aaa;
+      text-decoration: none;
       cursor: pointer;
-      vertical-align: middle;
+      border-bottom: 1px dotted;
     }
 
-    .tooltip-text {
+    .tooltip-name .tooltip-text {
       visibility: hidden;
       opacity: 0;
+      width: 220px;
       background-color: #f6f6f6;
       color: #333;
       text-align: left;
@@ -102,15 +100,13 @@
       bottom: 125%;
       left: 50%;
       transform: translateX(-50%);
-      width: 220px;
       font-size: 0.8rem;
       font-weight: 400;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
       transition: opacity 0.2s ease;
     }
 
-    .info-tooltip:hover .tooltip-text,
-    .info-tooltip.active .tooltip-text {
+    .tooltip-name:hover .tooltip-text {
       visibility: visible;
       opacity: 1;
     }
@@ -181,38 +177,6 @@
       color: #666;
       margin-top: 3rem;
     }
-
-    .name-tooltip {
-      position: relative;
-      cursor: pointer;
-      text-decoration: underline dotted;
-      display: inline-block;
-    }
-
-    .name-tooltip-text {
-      visibility: hidden;
-      opacity: 0;
-      background-color: #f6f6f6;
-      color: #333;
-      text-align: left;
-      padding: 0.4rem 0.6rem;
-      border-radius: 4px;
-      position: absolute;
-      bottom: 120%;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      font-size: 0.75rem;
-      font-weight: 400;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-      z-index: 10;
-      transition: opacity 0.2s ease;
-    }
-
-    .name-tooltip.active .name-tooltip-text {
-      visibility: visible;
-      opacity: 1;
-    }
   </style>
 </head>
 <body>
@@ -226,7 +190,6 @@
   </div>
 
   <img src="logo.png" alt="Immanentize Consulting logo" class="logo" />
-
   <h1>Immanentize</h1>
 
   <p style="font-size: 1.05rem; font-weight: 600; line-height: 1.6; margin-bottom: 1rem;">
@@ -245,34 +208,20 @@
   </div>
 
   <div class="section">
-    <h2>
-      Operators
-      <span class="info-tooltip" id="tooltipIcon">ℹ︎
-        <span class="tooltip-text">No random list. High trust. We like working together.</span>
-      </span>
-    </h2>
+    <h2>Operators</h2>
     <p>
-      <a href="https://www.linkedin.com/in/bourkestephen/" target="_blank">
-        <span class="name-tooltip" onclick="toggleNameTooltip(this)">
-          Stephen Bourke
-          <span class="name-tooltip-text">Irish. Founded Echo, scaled to 500k+ users, exited to McKesson. Strategic creative.</span>
-        </span>
+      <a href="https://www.linkedin.com/in/bourkestephen/" target="_blank" class="tooltip-name">Stephen Bourke
+        <span class="tooltip-text">Founded Echo, scaled to 500k+ users, exited to McKesson.</span>
       </a> (Health, Strategy)
     </p>
     <p>
-      <a href="https://www.linkedin.com/in/luiscamaraking/" target="_blank">
-        <span class="name-tooltip" onclick="toggleNameTooltip(this)">
-          Luis de la Cámara
-          <span class="name-tooltip-text">Spanish. Led growth at King, Rovio and Riot. Brand meets performance.</span>
-        </span>
+      <a href="https://www.linkedin.com/in/luiscamaraking/" target="_blank" class="tooltip-name">Luis de la Cámara
+        <span class="tooltip-text">Led growth at King, Rovio and Riot. Brand meets performance.</span>
       </a> (Gaming, Marketing)
     </p>
     <p>
-      <a href="https://www.linkedin.com/in/dominic-matthew-williams/" target="_blank">
-        <span class="name-tooltip" onclick="toggleNameTooltip(this)">
-          Dominic Williams
-          <span class="name-tooltip-text">British. Led ops at Echo, HelloFresh and Modern Milkman. Scales teams and systems.</span>
-        </span>
+      <a href="https://www.linkedin.com/in/dominic-matthew-williams/" target="_blank" class="tooltip-name">Dominic Williams
+        <span class="tooltip-text">Led ops at Echo, HelloFresh, and Modern Milkman. Scales teams and systems.</span>
       </a> (Logistics, Team Leadership)
     </p>
   </div>
@@ -304,26 +253,6 @@
       const theme = body.classList.contains('dark') ? 'dark' : 'light';
       localStorage.setItem('theme', theme);
       modeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
-    });
-
-    const tooltipIcon = document.getElementById('tooltipIcon');
-    document.addEventListener('click', (e) => {
-      const isTooltip = tooltipIcon.contains(e.target);
-      tooltipIcon.classList.toggle('active', isTooltip);
-      if (!isTooltip) tooltipIcon.classList.remove('active');
-    });
-
-    function toggleNameTooltip(el) {
-      document.querySelectorAll('.name-tooltip').forEach(tip => {
-        if (tip !== el) tip.classList.remove('active');
-      });
-      el.classList.toggle('active');
-    }
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.name-tooltip')) {
-        document.querySelectorAll('.name-tooltip').forEach(tip => tip.classList.remove('active'));
-      }
     });
   </script>
 </body>

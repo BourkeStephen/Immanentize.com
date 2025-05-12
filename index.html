@@ -84,12 +84,9 @@
       font-size: 1.2rem;
     }
 
-    .info-tooltip {
-      display: inline-block;
+    .tooltip-name {
       position: relative;
-      margin-left: 0.4rem;
-      font-size: 0.95rem;
-      color: #aaa;
+      display: inline-block;
       cursor: pointer;
     }
 
@@ -113,21 +110,9 @@
       z-index: 10;
     }
 
-    .info-tooltip:hover .tooltip-text,
-    .tooltip-name:hover .tooltip-text {
+    .tooltip-name.tooltip-active .tooltip-text {
       visibility: visible;
       opacity: 1;
-    }
-
-    .tooltip-name {
-      position: relative;
-      display: inline-block;
-    }
-
-    .tooltip-name .tooltip-text {
-      top: -0.2rem;
-      left: 100%;
-      margin-left: 0.4rem;
     }
 
     @media (max-width: 600px) {
@@ -229,7 +214,7 @@
     </label>
   </div>
 
-  <img src="logo.png" alt="Immanentize logo – operator-led consulting for startups" class="logo" />
+  <img src="logo.png" alt="Immanentize – consulting for ambitious European startups" class="logo" />
 
   <h1>Immanentize</h1>
 
@@ -251,7 +236,7 @@
   <div class="section fade-in">
     <h2>
       Operators
-      <span class="info-tooltip">ℹ︎
+      <span class="tooltip-name">ℹ︎
         <span class="tooltip-text">No randomers. High trust. We like working together.</span>
       </span>
     </h2>
@@ -308,6 +293,28 @@
       const theme = body.classList.contains('dark') ? 'dark' : 'light';
       localStorage.setItem('theme', theme);
       modeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
+    });
+
+    // Tooltip tap-to-toggle logic for mobile
+    document.addEventListener('DOMContentLoaded', () => {
+      const activeClass = 'tooltip-active';
+
+      document.querySelectorAll('.tooltip-name').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          document.querySelectorAll('.tooltip-name.' + activeClass).forEach(t => {
+            if (t !== el) t.classList.remove(activeClass);
+          });
+
+          el.classList.toggle(activeClass);
+        });
+      });
+
+      document.body.addEventListener('click', () => {
+        document.querySelectorAll('.tooltip-name.' + activeClass).forEach(t => t.classList.remove(activeClass));
+      });
     });
   </script>
 </body>

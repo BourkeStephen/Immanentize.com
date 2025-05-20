@@ -5,8 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Immanentize</title>
 
-  <meta name="description" content="Stephen Bourke and trusted partners provide exited founder and operator level consulting for European startups and ambitious companies. Strategy, compliance, growth, and exit planning from proven operators.">
+  <meta name="description" content="Exited founder and operator-level consulting for European startups and ambitious companies. Strategy, growth, and exit from proven operators.">
   <meta name="author" content="Stephen Bourke">
+  <meta property="og:title" content="Immanentize – Operator-Level Consulting" />
+  <meta property="og:description" content="Exited founder and operator-level support for serious European start-ups / scale-ups." />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#ffffff">
+
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 
@@ -24,8 +30,8 @@
     }
 
     body {
-      margin: 5rem auto 0 auto;
-      padding: 2rem;
+      margin: 4rem auto 0 auto;
+      padding: 1.5rem;
       background-color: var(--bg-color);
       color: var(--text-color);
       font-family: 'IBM Plex Sans', sans-serif;
@@ -106,7 +112,7 @@
       font-weight: 400;
       white-space: nowrap;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-      transition: opacity 0.2s ease;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
       z-index: 10;
     }
 
@@ -116,6 +122,9 @@
     }
 
     @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
       .tooltip-text {
         white-space: normal;
         width: calc(100vw - 4rem);
@@ -209,12 +218,12 @@
   <div class="toggle-container">
     <span class="toggle-label" id="mode-label">Dark</span>
     <label class="toggle-switch" aria-label="Toggle dark mode">
-      <input type="checkbox" id="toggle">
+      <input type="checkbox" id="toggle" />
       <span class="toggle-slider"></span>
     </label>
   </div>
 
-  <img src="logo.png" alt="Immanentize – consulting for ambitious European startups" class="logo" />
+  <img src="logo.png" alt="Immanentize logo" class="logo" />
 
   <h1>Immanentize</h1>
 
@@ -236,7 +245,7 @@
   <div class="section fade-in">
     <h2>
       Operators
-      <span class="tooltip-name">ℹ︎
+      <span class="tooltip-name" aria-label="Info about operators">ℹ︎
         <span class="tooltip-text">No randomers. High trust. We like working together.</span>
       </span>
     </h2>
@@ -282,7 +291,10 @@
     const toggle = document.getElementById('toggle');
     const modeLabel = document.getElementById('mode-label');
 
-    if (localStorage.getItem('theme') === 'dark') {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem('theme');
+
+    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
       body.classList.add('dark');
       toggle.checked = true;
       modeLabel.textContent = 'Light';
@@ -295,19 +307,16 @@
       modeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
     });
 
-    // Tooltip tap-to-toggle logic for mobile
+    // Tooltip mobile tap support
     document.addEventListener('DOMContentLoaded', () => {
       const activeClass = 'tooltip-active';
-
       document.querySelectorAll('.tooltip-name').forEach(el => {
         el.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-
           document.querySelectorAll('.tooltip-name.' + activeClass).forEach(t => {
             if (t !== el) t.classList.remove(activeClass);
           });
-
           el.classList.toggle(activeClass);
         });
       });

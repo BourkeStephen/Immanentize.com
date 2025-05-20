@@ -21,12 +21,14 @@
       --bg-color: #ffffff;
       --text-color: #000000;
       --link-color: #000000;
+      --info-color: #777777;
     }
 
     body.dark {
       --bg-color: #111111;
       --text-color: #f3f3f3;
       --link-color: #f3f3f3;
+      --info-color: #aaaaaa;
     }
 
     body {
@@ -123,8 +125,9 @@
 
     @media (max-width: 600px) {
       body {
-        padding: 1rem;
+        padding: 1rem 1rem 2rem 1rem;
       }
+
       .tooltip-text {
         white-space: normal;
         width: calc(100vw - 4rem);
@@ -132,10 +135,13 @@
       }
     }
 
+    .toggle-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 2rem;
+    }
+
     .toggle-container {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
       display: flex;
       align-items: center;
     }
@@ -211,16 +217,25 @@
         transform: translateY(0);
       }
     }
+
+    .info-icon {
+      color: var(--info-color);
+      font-size: 1rem;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
-  <div class="toggle-container">
-    <span class="toggle-label" id="mode-label">Dark</span>
-    <label class="toggle-switch" aria-label="Toggle dark mode">
-      <input type="checkbox" id="toggle" />
-      <span class="toggle-slider"></span>
-    </label>
+  <div class="toggle-wrapper">
+    <div class="toggle-container">
+      <span class="toggle-label" id="mode-label">Dark</span>
+      <label class="toggle-switch" aria-label="Toggle dark mode">
+        <input type="checkbox" id="toggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
   </div>
 
   <img src="logo.png" alt="Immanentize logo" class="logo" />
@@ -245,7 +260,7 @@
   <div class="section fade-in">
     <h2>
       Operators
-      <span class="tooltip-name" aria-label="Info about operators">ℹ︎
+      <span class="tooltip-name info-icon" aria-label="Info about operators">ℹ︎
         <span class="tooltip-text">No randomers. High trust. We like working together.</span>
       </span>
     </h2>
@@ -307,7 +322,7 @@
       modeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
     });
 
-    // Tooltip mobile tap support
+    // Tooltip tap-to-toggle logic for mobile
     document.addEventListener('DOMContentLoaded', () => {
       const activeClass = 'tooltip-active';
       document.querySelectorAll('.tooltip-name').forEach(el => {
@@ -322,7 +337,7 @@
       });
 
       document.body.addEventListener('click', () => {
-        document.querySelectorAll('.tooltip-name.' + activeClass).forEach(t => t.classList.remove(activeClass));
+        document.querySelectorAll('.tooltip-name.tooltip-active').forEach(t => t.classList.remove('tooltip-active'));
       });
     });
   </script>

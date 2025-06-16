@@ -17,29 +17,14 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #000000;
-      --link-color: #000000;
-      --info-color: #777777;
-    }
-
-    body.dark {
-      --bg-color: #111111;
-      --text-color: #f3f3f3;
-      --link-color: #f3f3f3;
-      --info-color: #aaaaaa;
-    }
-
     body {
       margin: 4rem auto 0 auto;
       padding: 1.5rem;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      background-color: #ffffff;
+      color: #000000;
       font-family: 'IBM Plex Sans', sans-serif;
       line-height: 1.75;
       letter-spacing: 0.2px;
-      transition: background-color 0.3s ease, color 0.3s ease;
       max-width: 680px;
       box-sizing: border-box;
     }
@@ -69,7 +54,7 @@
     }
 
     a {
-      color: var(--link-color);
+      color: #000000;
       text-decoration: underline;
     }
 
@@ -135,58 +120,6 @@
       }
     }
 
-    .toggle-wrapper {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 2rem;
-    }
-
-    .toggle-container {
-      display: flex;
-      align-items: center;
-    }
-
-    .toggle-label {
-      font-size: 0.9rem;
-      color: var(--text-color);
-      margin-right: 8px;
-    }
-
-    .toggle-switch {
-      width: 40px;
-      height: 20px;
-      background-color: #ccc;
-      border-radius: 50px;
-      position: relative;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .toggle-slider {
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 16px;
-      height: 16px;
-      background-color: white;
-      border-radius: 50%;
-      transition: transform 0.3s ease;
-    }
-
-    body.dark .toggle-switch {
-      background-color: #333;
-    }
-
-    body.dark .toggle-slider {
-      transform: translateX(20px);
-    }
-
     .investors-section {
       margin-top: 3.5rem;
       margin-bottom: 3.5rem;
@@ -219,7 +152,7 @@
     }
 
     .info-icon {
-      color: var(--info-color);
+      color: #777777;
       font-size: 1rem;
       margin-left: 0.5rem;
       cursor: pointer;
@@ -227,16 +160,6 @@
   </style>
 </head>
 <body>
-
-  <div class="toggle-wrapper">
-    <div class="toggle-container">
-      <span class="toggle-label" id="mode-label">Dark</span>
-      <label class="toggle-switch" aria-label="Toggle dark mode">
-        <input type="checkbox" id="toggle">
-        <span class="toggle-slider"></span>
-      </label>
-    </div>
-  </div>
 
   <img src="logo.png" alt="Immanentize logo" class="logo" />
 
@@ -248,14 +171,6 @@
   <p style="font-size: 1.05rem; font-weight: 600; letter-spacing: 0.3px; margin-top: 0.6rem;">
     Strategy. Growth. Exit.
   </p>
-
-  <div class="section fade-in">
-    <h2><span class="icon-heading">✓</span>What we do</h2>
-    <p>Clarity, outcomes — we cut through noise and make changes where they count.</p>
-
-    <h2><span class="icon-heading">✕</span>What we don’t do</h2>
-    <p>Pointless slides, meetings — we focus on what matters.</p>
-  </div>
 
   <div class="section fade-in">
     <h2>
@@ -302,26 +217,6 @@
   <p class="footer">&copy; 2025 Immanentize Ltd.</p>
 
   <script>
-    const body = document.body;
-    const toggle = document.getElementById('toggle');
-    const modeLabel = document.getElementById('mode-label');
-
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const storedTheme = localStorage.getItem('theme');
-
-    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
-      body.classList.add('dark');
-      toggle.checked = true;
-      modeLabel.textContent = 'Light';
-    }
-
-    toggle.addEventListener('change', () => {
-      body.classList.toggle('dark');
-      const theme = body.classList.contains('dark') ? 'dark' : 'light';
-      localStorage.setItem('theme', theme);
-      modeLabel.textContent = theme === 'dark' ? 'Light' : 'Dark';
-    });
-
     // Tooltip tap-to-toggle logic for mobile
     document.addEventListener('DOMContentLoaded', () => {
       const activeClass = 'tooltip-active';

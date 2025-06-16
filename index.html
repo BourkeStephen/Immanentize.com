@@ -70,56 +70,6 @@
       margin: 0 0 2.5rem 0;
     }
 
-    .icon-heading {
-      display: inline-block;
-      margin-right: 0.5rem;
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
-
-    .tooltip-name {
-      position: relative;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    .tooltip-text {
-      visibility: hidden;
-      opacity: 0;
-      background-color: #f6f6f6;
-      color: #333;
-      padding: 0.4rem 0.6rem;
-      border-radius: 4px;
-      position: absolute;
-      top: -0.2rem;
-      left: 100%;
-      margin-left: 0.4rem;
-      font-size: 0.8rem;
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 400;
-      white-space: nowrap;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 10;
-    }
-
-    .tooltip-name.tooltip-active .tooltip-text {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 1rem 1rem 2rem 1rem;
-      }
-
-      .tooltip-text {
-        white-space: normal;
-        width: calc(100vw - 4rem);
-        max-width: 320px;
-      }
-    }
-
     .investors-section {
       margin-top: 3.5rem;
       margin-bottom: 3.5rem;
@@ -150,13 +100,6 @@
         transform: translateY(0);
       }
     }
-
-    .info-icon {
-      color: #777777;
-      font-size: 1rem;
-      margin-left: 0.5rem;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
@@ -173,35 +116,22 @@
   </p>
 
   <div class="section fade-in">
-    <h2>
-      Operators
-      <span class="tooltip-name info-icon" aria-label="Info about operators">ℹ︎
-        <span class="tooltip-text">No randomers. We like working together.</span>
-      </span>
-    </h2>
+    <h2>Operators</h2>
 
     <p>
-      <a href="https://www.linkedin.com/in/bourkestephen/" target="_blank" class="tooltip-name">Stephen B.
-        <span class="tooltip-text">🇮🇪 Founded Echo, scaled to 500k+ patients, exited to McKesson.</span>
-      </a> (Health, Strategy)
+      <a href="https://www.linkedin.com/in/bourkestephen/" target="_blank">Stephen B.</a> (Health, Strategy)
     </p>
 
     <p>
-      <a href="https://www.linkedin.com/in/luiscamaraking/" target="_blank" class="tooltip-name">Luis C.
-        <span class="tooltip-text">🇪🇸 Led growth at King, Rovio and Riot. Brand meets performance.</span>
-      </a> (Gaming, Marketing)
+      <a href="https://www.linkedin.com/in/luiscamaraking/" target="_blank">Luis C.</a> (Gaming, Marketing)
     </p>
 
     <p>
-      <a href="https://www.linkedin.com/in/dominic-matthew-williams/" target="_blank" class="tooltip-name">Dominic W.
-        <span class="tooltip-text">🇬🇧 Led ops at HelloFresh, Echo and Modern Milkman. Scales teams and systems.</span>
-      </a> (Logistics, Team Building)
+      <a href="https://www.linkedin.com/in/dominic-matthew-williams/" target="_blank">Dominic W.</a> (Logistics, Team Building)
     </p>
 
     <p>
-      <a href="https://www.linkedin.com/in/eric-b-0a3831/" target="_blank" class="tooltip-name">Eric B.
-        <span class="tooltip-text">🇸🇪 Finance-led founder/operator. Leva, Commerzbank, Goldman Sachs.</span>
-      </a> (Finance, Fundraising)
+      <a href="https://www.linkedin.com/in/eric-b-0a3831/" target="_blank">Eric B.</a> (Finance, Fundraising)
     </p>
   </div>
 
@@ -216,25 +146,5 @@
 
   <p class="footer">&copy; 2025 Immanentize Ltd.</p>
 
-  <script>
-    // Tooltip tap-to-toggle logic for mobile
-    document.addEventListener('DOMContentLoaded', () => {
-      const activeClass = 'tooltip-active';
-      document.querySelectorAll('.tooltip-name').forEach(el => {
-        el.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          document.querySelectorAll('.tooltip-name.' + activeClass).forEach(t => {
-            if (t !== el) t.classList.remove(activeClass);
-          });
-          el.classList.toggle(activeClass);
-        });
-      });
-
-      document.body.addEventListener('click', () => {
-        document.querySelectorAll('.tooltip-name.tooltip-active').forEach(t => t.classList.remove('tooltip-active'));
-      });
-    });
-  </script>
 </body>
 </html>

@@ -91,6 +91,7 @@
     }
 
     * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
     html, body { background: var(--bg); }
     body {
       margin: 0 auto;
@@ -98,9 +99,16 @@
       max-width: 600px;
       color: var(--ink);
       font-family: "EB Garamond", Georgia, serif;
-      font-size: 1.125rem;
-      line-height: 1.6;
+      font-size: 1.15rem;
+      line-height: 1.62;
+      /* Old-style figures + real ligatures: the stats (500,000 / £120m / 2021)
+         sit into the line instead of shouting. This is the whole punch-up. */
+      font-feature-settings: "onum" 1, "liga" 1, "kern" 1;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
+
+    ::selection { background: rgba(124, 45, 45, 0.14); }
 
     header {
       display: flex;
@@ -149,10 +157,12 @@
     }
 
     .lede {
-      font-size: 1.7rem;
-      line-height: 1.25;
+      font-size: 1.78rem;
+      line-height: 1.22;
+      letter-spacing: -0.005em;
       font-weight: 400;
       margin: 0;
+      text-wrap: balance;
       color: var(--ink);
     }
 
@@ -175,18 +185,23 @@
       font-weight: 500;
       font-size: 1.2rem;
       color: var(--ink);
-      margin: 2.75rem 0 0.5rem;
+      margin: 3rem 0 0.5rem;
     }
 
-    p { margin: 0.75rem 0; }
+    p { margin: 0.75rem 0; max-width: 62ch; }
 
     a {
       color: var(--accent);
       text-decoration: underline;
       text-underline-offset: 3px;
       text-decoration-thickness: 1px;
+      text-decoration-color: rgba(124, 45, 45, 0.4);
+      transition: color 0.18s ease, text-decoration-color 0.18s ease;
     }
-    a:hover { color: var(--ink); }
+    a:hover {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
 
     .contact-line {
       margin: 0.4rem 0;
@@ -227,7 +242,7 @@
 
   <div class="bio-row">
     <img class="portrait" src="stephen.jpg" alt="Stephen Bourke">
-    <p class="lede">I build digital health companies. Lately I advise founders and their investors.</p>
+    <p class="lede">I build digital health companies, and advise their founders and investors.</p>
   </div>
 
   <p class="intro">
